@@ -7,10 +7,8 @@ import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.iruda.navigationexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,13 +20,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        val navView: BottomNavigationView = binding.bottomNav
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        //val navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.homeFragment, R.id.searchFragment
+            )
+        )
+
+        setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        navView.setupWithNavController(navController)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
