@@ -74,4 +74,14 @@
         android:name="com.iruda.navigationexample.ui.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.iruda.navigationexample.ui.CalendarFragment"
+        android:label="Calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.iruda.navigationexample.ui.NotificationsFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notifications" />
 </navigation>
