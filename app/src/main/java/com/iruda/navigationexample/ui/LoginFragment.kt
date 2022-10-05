@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.iruda.navigationexample.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -14,6 +15,8 @@ class LoginFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private val args: LoginFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +30,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val userNameDeepLink = args.username
+        binding.editTextLogin.setText(userNameDeepLink)
 
         binding.buttonConfirm.setOnClickListener {
             val userName = binding.editTextLogin.text.toString()
